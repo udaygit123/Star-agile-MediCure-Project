@@ -4,11 +4,14 @@
   tasks:
   - name: apt update
     command: sudo apt update
-  - name: Install MicroK8s
-    command: sudo snap install microk8s --classic
-  - name: Running the Medicure Docker image in K8s
-    command: sudo microk8s.kubectl run medicure --image=minimalkushal/medicure
-  - name: Exposing the Medicure Pod
-    command: sudo microk8s.kubectl expose pod medicure --type=NodePort --port=8082 --name=Medicure-svc
-  - name: Get Service
-    command: sudo microk8s.kubectl get svc
+  - name: Download Minikube
+    command: sudo curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+  - name: Install Minikube
+    command: sudo dpkg -i minikube_latest_amd64.deb
+  - name: Start Minikube
+    command: minikube start
+  - name: Create Deployment
+    command: sudo kubectl create deployment medicure --image=minimalkushal/medicure
+  - name: Expose Medicure Project
+    command: kubectl expose deployment medicure --type=NodePort --port=8080
+    
