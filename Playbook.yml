@@ -3,8 +3,8 @@
   connection: ssh
   tasks:
   - name: Create Deployemnt
-    command: sudo kubectl apply -f deployment.yml
+    command: sudo kubectl apply -f /var/lib/jenkins/workspace/Medicure/deployment.yml
   - name: Create Service
-    command: sudo kubectl apply -f svc.yml
+    command: sudo kubectl apply -f /var/lib/jenkins/workspace/Medicure/svc.yml
   - name: Get Services
     command: sudo kubectl get svc
