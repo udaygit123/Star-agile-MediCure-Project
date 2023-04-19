@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Execute Terraform file') {   // Terraform file execution
             steps {  
-              sh 'sudo chmod 600 Kushal.pem'
+                          sh 'sudo chmod 600 Kushal.pem'
 			  sh 'terraform init'
 			  sh 'terraform validate'
 			  sh 'terraform plan'
