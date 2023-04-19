@@ -1,14 +1,14 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "ap-south-1"
   access_key = "AKIAWYYXEWHSWUPVABME"
   secret_key = "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"
 }
 
 resource "aws_instance" "Medicure-Deploy" {
-  ami           = "ami-007855ac798b5175e" 
+  ami           = "ami-02eb7a4783e7e9317" 
   instance_type = "t2.micro" 
   key_name = "Kushal"
-  vpc_security_group_ids= ["sg-0b23fc55ea213e3a1"]
+  vpc_security_group_ids= ["sg-0906b8b9eb805dc82"]
   connection {
     type     = "ssh"
     user     = "ubuntu"
