@@ -42,7 +42,7 @@ resource "aws_instance" "Medicure-Deploy" {
              #"sudo kubectl apply -f /var/lib/jenkins/workspace/Medicure/svc.yml",
              "sudo kubectl create deployment medicure --image=minimalkushal/medicure",
              "sudo kubectl expose deployment medicure --type=NodePort --port=8082 --name=medicure-svc",
-             "sudo kubectl port-forward service/medicure-svc 8082:8082",
+             #"sudo kubectl port-forward service/medicure-svc 8082:8082",
              #"sudo kubectl get svc",
     ]
   }
