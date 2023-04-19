@@ -20,5 +20,13 @@ pipeline {
               sh 'sudo docker build -t minimalkushal/medicure .'
             }
         }
+        stage('Push Docker Image') {   // Pushing Docker Image
+            steps {  
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'dockerhub-password', usernameVariable: 'dockerhub-user')]) {
+                    sh "sudo docker login -u ${env.dockerhub-user} -p ${env.dockerhub-password}"
+                    sh 'sudo docker push minimalkushal/medicure'
+                }
+            }
+        }
     }
 }
