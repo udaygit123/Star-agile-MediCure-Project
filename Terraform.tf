@@ -43,7 +43,7 @@ resource "aws_instance" "Medicure-Deploy" {
              #"sudo kubectl get svc",
     ]
   }
- #  provisioner "local-exec" {
- #      command = "ansible-playbook /var/lib/jenkins/workspace/Medicure/Playbook.yml "
- # } 
+   provisioner "local-exec" {
+       command = "ansible-playbook /var/lib/jenkins/workspace/Medicure/Playbook.yml "
+   } 
 }
