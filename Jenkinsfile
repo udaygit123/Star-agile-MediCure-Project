@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Build Docker Image') {   // Building Docker Image
             steps {  
-              sh 'docker build -t minimalkushal/medicure .'
+              sh 'sudo docker build -t minimalkushal/medicure .'
             }
         }
     }
