@@ -16,6 +16,12 @@
     command: minikube start --force
   - name: Create Deployment
     command: sudo kubectl create deployment medicure --image=minimalkushal/medicure
+  - name: Install Kubectl  
+     yum:
+        name: kubectl
+        state: present
+  - name: Kuebctl Version
+    command: kubectl version
   - name: Expose Medicure Project
     command: sudo kubectl expose deployment medicure --type=NodePort --port=8082
   - name: Port Forward
