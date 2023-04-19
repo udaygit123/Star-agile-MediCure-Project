@@ -6,17 +6,9 @@
     command: sudo apt update
   - name: Install MicroK8s
     command: sudo snap install microk8s --classic
-  - name: Add user to group
-    command: sudo usermod -a -G microk8s $USER
-  - name: Change ownership
-    command: sudo chown -f -R $USER ~/.kube
-  - name: Change user
-    command: su - $USER
-  - name: Wait MicroK8s to initalize
-    command: sudo microk8s status --wait-ready
   - name: Running the Medicure Docker image in K8s
-    command: sudo microk8s kubectl run medicure --image=minimalkushal/medicure
+    command: sudo microk8s.kubectl run medicure --image=minimalkushal/medicure
   - name: Exposing the Medicure Pod
-    command: sudo microk8s kubectl expose pod medicure --type=NodePort --port=8082 --name=Medicure-svc
+    command: sudo microk8s.kubectl expose pod medicure --type=NodePort --port=8082 --name=Medicure-svc
   - name: Get Service
-    command: sudo microk8s kubectl get svc
+    command: sudo microk8s.kubectl get svc
