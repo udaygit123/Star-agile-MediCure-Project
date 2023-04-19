@@ -6,7 +6,7 @@ provider "aws" {
 
 resource "aws_instance" "Medicure-Deploy" {
   ami           = "ami-02eb7a4783e7e9317" 
-  instance_type = "t2.micro" 
+  instance_type = "t2.small" 
   key_name = "Kushal"
   vpc_security_group_ids= ["sg-0906b8b9eb805dc82"]
   connection {
