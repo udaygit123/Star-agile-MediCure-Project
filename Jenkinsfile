@@ -10,5 +10,10 @@ pipeline {
               sh 'terraform version'
             }
         }
+        stage('Packaging') {
+            steps {  // Packaging the Project
+              sh 'mvn clean package'
+            }
+        }
     }
 }
