@@ -6,6 +6,8 @@
     command: sudo yum update
   - name: Install Docker
     command: sudo yum install docker -y
+  - name: Start Docker
+    command: sudo service docker start
   - name: Download Minikube
     command: sudo curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
   - name: Install Minikube
