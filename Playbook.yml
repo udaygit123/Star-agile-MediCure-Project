@@ -13,5 +13,7 @@
   - name: Create Deployment
     command: sudo kubectl create deployment medicure --image=minimalkushal/medicure
   - name: Expose Medicure Project
-    command: kubectl expose deployment medicure --type=NodePort --port=8080
+    command: sudo kubectl expose deployment medicure --type=NodePort --port=8080
+  - name: Get Services
+    command: sudo kubectl get svc
     
