@@ -7,6 +7,6 @@
   - name: Expose Medicure Project
     command: sudo kubectl expose deployment medicure --type=NodePort --port=8082 --name=medicure-svc
   - name: Port Forward
-    command: kubectl port-forward service/medicure-svc 8082:8082
+    command: sudo kubectl port-forward service/medicure-svc 8082:8082
   - name: Get Services
     command: sudo kubectl get svc
