@@ -37,10 +37,10 @@ pipeline {
 			  sh 'terraform apply -auto-approve'
             }
         }
-	stage('Deployment of Docker Image in K8s') {   // K8s Deployment
-            steps {  
-              ansiblePlaybook become: true, credentialsId: 'execute-ansible', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/var/lib/jenkins/workspace/Medicure/inventory.txt', playbook: '/var/lib/jenkins/workspace/Medicure/Playbook.yml'
-            }
-        }
+	//stage('Deployment of Docker Image in K8s') {   // K8s Deployment
+          //  steps {  
+            //  ansiblePlaybook become: true, credentialsId: 'execute-ansible', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/var/lib/jenkins/workspace/Medicure/inventory.txt', playbook: '/var/lib/jenkins/workspace/Medicure/Playbook.yml'
+            //}
+        //}
     }
 }
