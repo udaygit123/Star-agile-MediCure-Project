@@ -1,0 +1,16 @@
+- hosts: all
+  become: true
+  connection: ssh
+  tasks:
+  - name: apt update
+    command: sudo apt update
+  - name: Install MicroK8s
+    command: sudo snap install microk8s --classic
+  - name: Start MicroK8s
+    command: sudo microk8s start
+  - name: Running the Medicure Docker image in K8s
+    command: sudo microk8s.kubectl run Medicure --image=minimalkushal/medicure
+  - name: Exposing the Medicure Pod
+    command: sudo microk8s.kubectl expose pod Medicure --type=NodePort --port=8082 --name=Medicure-svc
+  - name: Get Service
+    command: sudo microk8s.kubectl get svc
