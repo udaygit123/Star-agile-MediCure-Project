@@ -13,7 +13,7 @@
   - name: Install Minikube
     command: sudo rpm -Uvh minikube-latest.x86_64.rpm
   - name: Start Minikube
-    command: minikube start
+    command: minikube start --force
   - name: Create Deployment
     command: sudo kubectl create deployment medicure --image=minimalkushal/medicure
   - name: Expose Medicure Project
