@@ -4,6 +4,8 @@
   tasks:
   - name: apt update
     command: sudo apt update
+  - name: Install Docker
+    command: sudo apt install docker.io -y
   - name: Download Minikube
     command: sudo curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
   - name: Install Minikube
