@@ -40,14 +40,14 @@ resource "aws_instance" "Medicure-Deploy" {
              "sudo minikube start --force",
              #"sudo kubectl apply -f /var/lib/jenkins/workspace/Medicure/deployment.yml",
              #"sudo kubectl apply -f /var/lib/jenkins/workspace/Medicure/svc.yml",
-             #"sudo kubectl create deployment medicure --image=minimalkushal/medicure",
-             #"sudo kubectl expose deployment medicure --type=NodePort --port=8082",
-             #"sudo kubectl port-forward service/hello-minikube 8082:8082",
+             "sudo kubectl create deployment medicure --image=minimalkushal/medicure",
+             "sudo kubectl expose deployment medicure --type=NodePort --port=8082 --name=medicure-svc",
+             "sudo kubectl port-forward service/medicure-svc 8082:8082",
              #"sudo kubectl get svc",
     ]
   }
-  provisioner "local-exec" {
-       command = "ansible-playbook /var/lib/jenkins/workspace/Medicure/Playbook.yml "
+  #provisioner "local-exec" {
+   #    command = "ansible-playbook /var/lib/jenkins/workspace/Medicure/Playbook.yml "
       #command = "sudo kubectl apply -f /var/lib/jenkins/workspace/Medicure/deployment.yml"
-   } 
+   #} 
 }
