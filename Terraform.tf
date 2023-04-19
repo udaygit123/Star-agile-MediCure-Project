@@ -22,9 +22,9 @@ resource "aws_instance" "Medicure-Deploy" {
     Name = "Finance Me Deploy"
   }
   provisioner "local-exec" {
-        command = " echo ${aws_instance.Finance-Me-Deploy.public_ip} >> inventory.txt "
+        command = " echo ${aws_instance.Medicure-Deploy.public_ip} >> inventory.txt "
   }
    provisioner "local-exec" {
-  command = "ansible-playbook /var/lib/jenkins/workspace/FinanceMeProject/Playbook.yml "
+  command = "ansible-playbook /var/lib/jenkins/workspace/Medicure/Playbook.yml "
   } 
 }
