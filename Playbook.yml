@@ -14,10 +14,17 @@
     command: sudo rpm -Uvh minikube-latest.x86_64.rpm
   - name: Start Minikube
     command: minikube start --force
-  - name: Install Kubectl  
-    yum:
-        name: kubectl
-        state: present
+  - name: Add Kubectl Links 
+    command: cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+             [kubernetes]
+             name=Kubernetes
+             baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+             enabled=1
+             gpgcheck=1
+             gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+             EOF
+  - name: Install Kubectl
+    command: sudo yum install -y kubectl
   - name: Kuebctl Version
     command: kubectl version
   - name: Create Deployment
