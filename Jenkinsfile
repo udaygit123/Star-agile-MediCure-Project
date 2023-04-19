@@ -37,5 +37,10 @@ pipeline {
 			  sh 'terraform apply -auto-approve'
             }
         }
+	stage('Deployment of Docker Image in K8s') {   // K8s Deployment
+            steps {  
+              ansiblePlaybook become: true, credentialsId: 'execute-ansible', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.txt', playbook: 'Playbook.yml'
+            }
+        }
     }
 }
