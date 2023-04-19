@@ -5,13 +5,13 @@ provider "aws" {
 }
 
 resource "aws_instance" "Medicure-Deploy" {
-  ami           = "ami-02eb7a4783e7e9317" 
+  ami           = "ami-07d3a50bd29811cd1" 
   instance_type = "t2.medium" 
   key_name = "Kushal"
   vpc_security_group_ids= ["sg-0906b8b9eb805dc82"]
   connection {
     type     = "ssh"
-    user     = "ubuntu"
+    user     = "ec2-user"
     private_key = file("Kushal.pem")
     host     = self.public_ip
   }
