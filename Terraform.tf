@@ -37,10 +37,12 @@ resource "aws_instance" "Medicure-Deploy" {
              "sudo cp kubectl /usr/local/bin/kubectl",
              "sudo groupadd docker",
              "sudo usermod -aG docker ec2-user",
+             "sudo kubectl apply -f deployment.yml",
+             "sudo kubectl apply -f svc.yml",
              #"sudo kubectl create deployment medicure --image=minimalkushal/medicure",
              #"sudo kubectl expose deployment medicure --type=NodePort --port=8082",
              #"sudo kubectl port-forward service/hello-minikube 8082:8082",
-             #"sudo kubectl get svc",
+             "sudo kubectl get svc",
     ]
   }
  #  provisioner "local-exec" {
