@@ -2,24 +2,6 @@
   become: true
   connection: ssh
   tasks:
-  - name: Yum update
-    command: sudo yum update
-  - name: Install Docker
-    command: sudo yum install docker -y
-  - name: Start Docker
-    command: sudo service docker start
-  - name: Download Minikube
-    command: sudo curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
-  - name: Install Minikube
-    command: sudo rpm -Uvh minikube-latest.x86_64.rpm
-  - name: Start Minikube
-    command: minikube start --force
-  - name: Download Kubectl
-    command: sudo curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-  - name: Install Kubectl
-    command: sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-  - name: Kuebctl Version Check
-    command: kubectl version --client
   - name: Create Deployment
     command: sudo kubectl create deployment medicure --image=minimalkushal/medicure
   - name: Expose Medicure Project
@@ -28,4 +10,3 @@
     command: kubectl port-forward service/hello-minikube 8082:8082
   - name: Get Services
     command: sudo kubectl get svc
-    
