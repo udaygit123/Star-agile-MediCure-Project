@@ -14,19 +14,12 @@
     command: sudo rpm -Uvh minikube-latest.x86_64.rpm
   - name: Start Minikube
     command: minikube start --force
-  - name: Add Kubectl Links 
-    command: cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
-             [kubernetes]
-             name=Kubernetes
-             baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
-             enabled=1
-             gpgcheck=1
-             gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-             EOF
+  - name: Download Kubectl
+    command: sudo curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
   - name: Install Kubectl
-    command: sudo yum install -y kubectl
-  - name: Kuebctl Version
-    command: kubectl version
+    command: sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+  - name: Kuebctl Version Check
+    command: kubectl version --client
   - name: Create Deployment
     command: sudo kubectl create deployment medicure --image=minimalkushal/medicure
   - name: Expose Medicure Project
