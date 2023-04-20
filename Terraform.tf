@@ -24,8 +24,8 @@ resource "aws_instance" "Medicure-Deploy" {
   provisioner "local-exec" {
         command = " echo ${aws_instance.Medicure-Deploy.public_ip} >> inventory.txt "
   }
-   provisioner "remote-exec" {
-    inline = [
+#   provisioner "remote-exec" {
+ #   inline = [
              # "sudo apt update -y",
              # "sudo apt install docker.io -y"
               #"sudo snap install microk8s --classic",
@@ -52,8 +52,8 @@ resource "aws_instance" "Medicure-Deploy" {
              #"sudo kubectl create deployment medicure --image=minimalkushal/medicure",
              #"sudo kubectl expose deployment medicure --type=NodePort --port=8082 --name=medicure-svc",
              #"sudo kubectl port-forward service/medicure-svc 8082:8082",
-    ]
-  }
+   # ]
+  #}
   #provisioner "local-exec" {
      command = "ansible-playbook /var/lib/jenkins/workspace/Medicure/Playbook.yml "
       #command = "sudo kubectl apply -f /var/lib/jenkins/workspace/Medicure/deployment.yml"
