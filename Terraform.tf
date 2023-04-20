@@ -1,18 +1,18 @@
 provider "aws" {
-  region = "ap-south-1"
+  region = "us-east-1"
   access_key = "AKIAWYYXEWHSWUPVABME"
   secret_key = "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"
 }
 
 resource "aws_instance" "Medicure-Deploy" {
-  ami           = "ami-02eb7a4783e7e9317" 
+  ami           = "ami-007855ac798b5175e" 
   instance_type = "t2.medium" 
-  key_name = "Kushal"
-  vpc_security_group_ids= ["sg-0906b8b9eb805dc82"]
+  key_name = "Kushal-US-East-1"
+  vpc_security_group_ids= ["sg-0b23fc55ea213e3a1"]
   connection {
     type     = "ssh"
     user     = "ubuntu"
-    private_key = file("Kushal.pem")
+    private_key = file("Kushal-US-East-1.pem")
     host     = self.public_ip
   }
   provisioner "remote-exec" {
