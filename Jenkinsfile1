@@ -23,6 +23,21 @@ pipeline {
         steps {
 	publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Medicure-Health-Project/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
 		}
-	     }	
+	     }
+     stage('Docker Image Creation'){
+        steps {
+           sh 'docker build -t udaydocker123/medicureproject:latest .'
+                     }
+                 }
+
+     stage('Push Image to DockerHub'){
+     steps {
+                  withCredentials([usernamePassword(credentialsId: 'Dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+         sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+         sh 'docker push udaydocker123/medicureproject:latest'
+
+	            }
+                }
+           }
 	    }
 	   }
