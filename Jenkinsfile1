@@ -1,0 +1,23 @@
+pipeline {
+  agent any
+  tools {
+     maven 'M2_HOME'
+      }
+   
+     stages {
+        stage('checkout'){
+           steps {
+             echo 'checkout the code from GitRepo'
+             git branch: 'main', url: 'https://github.com/udaygit123/Star-agile-MediCure-Project.git'
+                    }
+            }
+          }
+
+     stage('Build the  Application'){
+               steps {
+                   echo "Packaging Application"
+                   sh 'mvn clean package'
+                    }
+                 }
+		}
+		
