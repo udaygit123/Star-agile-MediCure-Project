@@ -29,6 +29,7 @@ resource "aws_instance" "Medicure-Deploy" {
               "sudo apt update -y",
               "sudo apt install docker.io -y",
               "sudo snap install microk8s --classic",
+              "sudo sleep 30"
               #"sudo usermod -aG microk8s $USER",
              #"sudo chown -f -R $USER ~/.kube",
              # "sudo microk8s status --wait-ready",
