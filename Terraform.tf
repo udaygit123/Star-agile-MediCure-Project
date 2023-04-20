@@ -1,18 +1,18 @@
 provider "aws" {
   region = "us-east-1"
-  access_key = "AKIAWYYXEWHSWUPVABME"
-  secret_key = "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"
+  access_key = "AKIAZEM74KA4DWVKAUEI"
+  secret_key = "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"
 }
 
 resource "aws_instance" "Medicure-Deploy" {
   ami           = "ami-007855ac798b5175e" 
   instance_type = "t2.medium" 
-  key_name = "Kushal-US-East-1"
-  vpc_security_group_ids= ["sg-0b23fc55ea213e3a1"]
+  key_name = "JenkinSerP1key.pem"
+  vpc_security_group_ids= ["sg-077ce7b1c53c11b8a"]
   connection {
     type     = "ssh"
     user     = "ubuntu"
-    private_key = file("Kushal-US-East-1.pem")
+    private_key = file("JenkinSerP1key.pem")
     host     = self.public_ip
   }
   provisioner "remote-exec" {
@@ -35,7 +35,7 @@ resource "aws_instance" "Medicure-Deploy" {
              # "sudo microk8s status --wait-ready",
              # "sudo microk8s enable dns ingress",
               "sudo microk8s status",
-              "sudo microk8s kubectl create deployment medicure-deploy --image=minimalkushal/medicure",
+              "sudo microk8s kubectl create deployment medicure-deploy --image=udaydocker123/medicureproject",
               "sudo microk8s kubectl expose deployment medicure-deploy --port=8082 --type=NodePort",
               "sudo microk8s kubectl get svc",
               "sudo echo Public IP Address of the Instance",
