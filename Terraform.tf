@@ -24,18 +24,19 @@ resource "aws_instance" "Medicure-Deploy" {
   provisioner "local-exec" {
         command = " echo ${aws_instance.Medicure-Deploy.public_ip} >> inventory.txt "
   }
-#   provisioner "remote-exec" {
- #   inline = [
-             # "sudo apt update -y",
-             # "sudo apt install docker.io -y"
-              #"sudo snap install microk8s --classic",
-             # "sudo usermod -aG microk8s $USER",
+   provisioner "remote-exec" {
+    inline = [
+              "sudo apt update -y",
+              "sudo apt install docker.io -y"
+              "sudo snap install microk8s --classic",
+              #"sudo usermod -aG microk8s $USER",
              #"sudo chown -f -R $USER ~/.kube",
              # "sudo microk8s status --wait-ready",
              # "sudo microk8s enable dns ingress",
-              #"sudo microk8s kubectl create deployment medicure-deploy --image=minimalkushal/medicure",
-              #"sudo microk8s kubectl expose deployment medicure-deploy --port=8082 --type=NodePort",
-              #"sudo kubectl get svc",
+              "sudo microk8s status",
+              "sudo microk8s kubectl create deployment medicure-deploy --image=minimalkushal/medicure",
+              "sudo microk8s kubectl expose deployment medicure-deploy --port=8082 --type=NodePort",
+              "sudo kubectl get svc",
              #"sudo yum install docker -y",
              #"sudo systemctl start docker",
              #"sudo wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64",
@@ -54,8 +55,8 @@ resource "aws_instance" "Medicure-Deploy" {
              #"sudo kubectl port-forward service/medicure-svc 8082:8082",
    # ]
   #}
-  provisioner "local-exec" {
-     command = "ansible-playbook /var/lib/jenkins/workspace/Medicure/Playbook.yml "
+ # provisioner "local-exec" {
+  #   command = "ansible-playbook /var/lib/jenkins/workspace/Medicure/Playbook.yml "
       #command = "sudo kubectl apply -f /var/lib/jenkins/workspace/Medicure/deployment.yml"
-   } 
+   #} 
 }
