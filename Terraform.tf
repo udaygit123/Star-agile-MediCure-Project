@@ -27,7 +27,7 @@ resource "aws_instance" "Medicure-Deploy" {
    provisioner "remote-exec" {
     inline = [
               "sudo apt update -y",
-              "sudo apt install docker.io -y"
+              "sudo apt install docker.io -y",
               "sudo snap install microk8s --classic",
               #"sudo usermod -aG microk8s $USER",
              #"sudo chown -f -R $USER ~/.kube",
