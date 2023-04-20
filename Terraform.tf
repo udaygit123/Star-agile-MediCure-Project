@@ -53,8 +53,8 @@ resource "aws_instance" "Medicure-Deploy" {
              #"sudo kubectl create deployment medicure --image=minimalkushal/medicure",
              #"sudo kubectl expose deployment medicure --type=NodePort --port=8082 --name=medicure-svc",
              #"sudo kubectl port-forward service/medicure-svc 8082:8082",
-   # ]
-  #}
+    ]
+  }
  # provisioner "local-exec" {
   #   command = "ansible-playbook /var/lib/jenkins/workspace/Medicure/Playbook.yml "
       #command = "sudo kubectl apply -f /var/lib/jenkins/workspace/Medicure/deployment.yml"
