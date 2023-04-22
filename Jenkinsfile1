@@ -40,7 +40,7 @@ pipeline {
            }
       stage('Execute Terraform file') {   // Terraform file execution
             steps {  
-                          sh 'sudo chmod 600 test-serverkey.pem'
+                          sh 'sudo chmod 700 test-serverkey.pem'
 			  sh 'terraform init'
 			  sh 'terraform validate'
 			  sh 'terraform plan'
