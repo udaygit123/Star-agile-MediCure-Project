@@ -7,12 +7,12 @@ provider "aws" {
 resource "aws_instance" "test-server" {
   ami           = "ami-007855ac798b5175e" 
   instance_type = "t2.medium" 
-  key_name = "JenkinSerP1key"
+  key_name = "test-serverkey"
   vpc_security_group_ids= ["sg-077ce7b1c53c11b8a"]
   connection {
     type     = "ssh"
     user     = "ubuntu"
-    private_key = file("JenkinSerP1key.pem")
+    private_key = file("test-serverkey.pem")
     host     = self.public_ip
   }
   provisioner "remote-exec" {
@@ -36,7 +36,7 @@ resource "aws_instance" "test-server" {
              # "sudo microk8s enable dns ingress",
               "sudo microk8s status",
               "sudo microk8s kubectl create deployment test-server --image=udaydocker123/medicureproject",
-              "sudo microk8s kubectl expose deployment test-server --port=8089 --type=NodePort",
+              "sudo microk8s kubectl expose deployment test-server --port=8081 --type=NodePort",
               "sudo microk8s kubectl get svc",
               "sudo echo Public IP Address of the Instance",
               "sudo curl http://checkip.amazonaws.com",
