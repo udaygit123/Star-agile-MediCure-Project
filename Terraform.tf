@@ -11,7 +11,7 @@ resource "aws_instance" "test-server" {
   vpc_security_group_ids= ["sg-077ce7b1c53c11b8a"]
   connection {
     type     = "ssh"
-    user     = "terrauser"
+    user     = "ubuntu"
     private_key = file("test-serverkey.pem")
     host     = self.public_ip
   }
