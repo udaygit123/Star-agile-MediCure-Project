@@ -1,10 +1,10 @@
 provider "aws" {
   region = "us-east-1"
-  access_key = "AKIAZEM74KA4DWVKAUEI"
-  secret_key = "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"
+  aws_access_key_id = "AKIAZEM74KA4DWVKAUEI"
+  aws_secret_access_key = "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"
 }
 
-resource "aws_instance" "Medicure-Deploy" {
+resource "aws_instance" "test-server" {
   ami           = "ami-007855ac798b5175e" 
   instance_type = "t2.medium" 
   key_name = "JenkinSerP1key.pem"
@@ -19,10 +19,10 @@ resource "aws_instance" "Medicure-Deploy" {
     inline = [ "echo 'wait to start instance' "]
   }
   tags = {
-    Name = "Medicure Deploy"
+    Name = "test-server"
   }
   provisioner "local-exec" {
-        command = " echo ${aws_instance.Medicure-Deploy.public_ip} >> inventory.txt "
+        command = " echo ${aws_instance.test-server.public_ip} >> inventory.txt "
   }
    provisioner "remote-exec" {
     inline = [
@@ -35,8 +35,8 @@ resource "aws_instance" "Medicure-Deploy" {
              # "sudo microk8s status --wait-ready",
              # "sudo microk8s enable dns ingress",
               "sudo microk8s status",
-              "sudo microk8s kubectl create deployment medicure-deploy --image=udaydocker123/medicureproject",
-              "sudo microk8s kubectl expose deployment medicure-deploy --port=8082 --type=NodePort",
+              "sudo microk8s kubectl create deployment test-server --image=udaydocker123/medicureproject",
+              "sudo microk8s kubectl expose deployment test-server --port=8089 --type=NodePort",
               "sudo microk8s kubectl get svc",
               "sudo echo Public IP Address of the Instance",
               "sudo curl http://checkip.amazonaws.com",
