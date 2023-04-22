@@ -1,7 +1,7 @@
 provider "aws" {
   region = "us-east-1"
-  aws_access_key_id = "AKIAZEM74KA4DWVKAUEI"
-  aws_secret_access_key = "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"
+  access_key_id = "AKIAZEM74KA4DWVKAUEI"
+  secret_access_key = "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"
 }
 
 resource "aws_instance" "test-server" {
