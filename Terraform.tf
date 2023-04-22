@@ -7,7 +7,7 @@ provider "aws" {
 resource "aws_instance" "test-server" {
   ami           = "ami-007855ac798b5175e" 
   instance_type = "t2.medium" 
-  key_name = "JenkinSerP1key.pem"
+  key_name = "JenkinSerP1key"
   vpc_security_group_ids= ["sg-077ce7b1c53c11b8a"]
   connection {
     type     = "ssh"
