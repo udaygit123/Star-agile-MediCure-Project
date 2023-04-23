@@ -35,6 +35,8 @@ resource "aws_instance" "test-server" {
       "sudo chmod +x /home/ubuntu/kubectl",
       "sudo cp kubectl /usr/local/bin/kubectl",
       "sudo usermod -aG docker ubuntu"
+      "sudo kubectl create deployment test-server --image=udaydocker123/medicureproject",
+      "sudo kubectl expose deployment test-server --port=8081 --type=NodePort",
     ]
   }
 }
