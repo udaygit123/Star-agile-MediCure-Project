@@ -34,7 +34,7 @@ resource "aws_instance" "test-server" {
       "curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl",
       "sudo chmod +x /home/ubuntu/kubectl",
       "sudo cp kubectl /usr/local/bin/kubectl",
-      "sudo usermod -aG docker ubuntu"
+      "sudo usermod -aG docker ubuntu",
       "sudo kubectl create deployment test-server --image=udaydocker123/medicureproject",
       "sudo kubectl expose deployment test-server --port=8081 --type=NodePort",
     ]
